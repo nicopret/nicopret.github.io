@@ -1,0 +1,288 @@
+{
+    "careers": [{
+        "company": "PBT Group",
+        "dateStart": "2017-03-01",
+        "industry": "Banking",
+        "position": "Senior Development Lead",
+        "projects": [{
+            "name": "Leading a dynamic group of full stack developers to deliver the next generation mobile banking app.",
+            "project": [ "Agile", "Kanban", "Scrum" ],
+            "services": [ "Architecture", "Microservices", "Springboot", "Swagger" ],
+            "technologies": [ "CSS", "HTML", "Java", "JavaScript", "Kendo" ]
+        }]
+    }, {
+        "company": "REDi",
+        "dateEnd": "2017-02-28",
+        "dateStart": "2014-05-01",
+        "industry": "Property",
+        "position": "Full-Stack Engineer",
+        "projects": [{
+            "name": "Maintained and enhanced a property listing website which focused on properties located in estates.",
+            "project": [ "Agile", "Scrum" ],
+            "services": [ "Architecture", "Maps", "SQL Server", "Tomcat" ],
+            "technologies": [ "Angular", "CSS", "HTML", "Java", "JavaScript" ]
+        }, {
+            "name": "Developed the admin client that managed the property listing website",
+            "project": [ "Agile", "Scrum" ],
+            "services": [ "Architecture", "AWS", "SQL Server", "Tomcat", "Virtualization" ],
+            "technologies": [ "Angular", "CSS", "HTML", "Java", "JavaScript" ]
+        }, {
+            "name": "Designed and developed a gateway server that enabled partners to integrate into our platform. The gateway had to cater for both REST and SOAP while focusing heavily on security and performance.",
+            "project": [ "Agile", "Scrum" ],
+            "services": [ "Architecture", "J2EE", "Tomcat" ],
+            "technologies": [ "Java" ]
+        }]
+    }, {
+        "dateEnd": "2014-04-30",
+        "dateStart": "2013-05-01",
+        "industry": "Media",
+        "position": "Digital Strategist",
+        "projects": [{
+            "name": "Tecnical lead in a team of designers and copy writers. We focused on delivering media rich websites for the pre-sales team.",
+            "project": [ "Agile", "Kanban" ],
+            "services": [ "Architecture", "Design", "JQuery" ],
+            "technologies": [ "CSS", "HTML", "JavaScript" ]
+        }]
+    }, {
+        "company": "Old Mutual",
+        "dateEnd": "2013-04-30",
+        "dateStart": "2012-06-01",
+        "industry": "Financial",
+        "position": "Technical Architect",
+        "projects": [{
+            "name": "Delivered a major Documentum upgrade which included multiple database upgrades, operating system upgrades and a migration of the content store to a LAN attahed storage solution. I also had to migrate the Development and Testing environments to virtualized servers.",
+            "project": [ "Waterfall" ],
+            "services": [ "Architecture", "Documentum", "Oracle", "Solaris", "VMWare"],
+            "technologies": [ "J2EE", "Java", "JavaScript" ]
+        }]
+    }, {
+        "company": "Britehouse SSD",
+        "dateEnd": "2012-05-31",
+        "dateStart": "2011-09-01",
+        "industry": "IT",
+        "position": "Solutions Architect",
+        "projects": [{
+            "name": "Created a content management unit to assist existing and new partners with their content implementations",
+            "services": [ "Architecture", "Documentum" ],
+            "technologies": [ "Java" ]
+        }]
+    }, {
+        "company": "EMC",
+        "dateEnd": "2010-10-31",
+        "dateStart": "2009-06-30",
+        "industry": "IT",
+        "position": "Solutions Architect",
+        "projects": [{
+            "name": "Assisted various clients with Documentum, my responsibilities included pre-sales and the architeture and development of solutions for new and existing clients.",
+            "services": [ "Architecture", "Documentum" ],
+            "technologies": [ "Java", "J2EE" ]
+        }]
+    }, {
+        "company": "Zilvermine IT Solutions",
+        "dateEnd": "2009-05-31",
+        "dateStart": "2008-03-01",
+        "industry": "Banking",
+        "position": "Technical Architect",
+        "projects": [{
+            "name": "Lead the technical design for a customer biometric system for one of the leading banks in South Africa",
+            "services": [ "Architecture", "Documentum" ]
+        }]
+    }, {
+        "company": "Old Mutual",
+        "dateEnd": "2008-02-28",
+        "dateStart": "2005-06-01",
+        "industry": "Financial",
+        "position": "Technical Architect",
+        "projects": [{
+            "name": "Administer and improved the Documentum installation",
+            "services": [ "Documentum" ],
+            "technologies": [ "Java", "J2EE" ]
+        }]
+    }, {
+        "company": "Waymark Infotech",
+        "dateEnd": "2005-05-31",
+        "dateStart": "2004-03-01",
+        "industry": "IT",
+        "position": "Senior Documentum Developer",
+        "projects": [{
+            "name": "Involved in various public sector projects that focused on content capture and business process automation",
+            "services": [ "Documentum" ],
+            "technologies": [ "Java", "J2EE" ]
+        }]
+    }, {
+        "company": "Discovery Health",
+        "dateEnd": "2004-02-28",
+        "dateStart": "2002-04-01",
+        "industry": "Financial",
+        "position": "Documentum Developer",
+        "projects": [{
+            "name": "Web content development and administration",
+            "services": [ "Documentum" ],
+            "technologies": [ "Java", "J2EE" ]
+        }]
+    }, {
+        "company": "Discovery Health",
+        "dateEnd": "2002-03-31",
+        "dateStart": "2001-03-01",
+        "industry": "Financial",
+        "position": "Javascript developer",
+        "projects": [{
+            "name": "Website design, development and optimisation",
+            "services": [ "Architecture", "Design", "JQuery" ],
+            "technologies": [ "CSS", "HTML", "JavaScript" ]
+        }]
+    }, {
+        "company": "Bank of Athens",
+        "dateEnd": "2000-05-30",
+        "dateStart": "2000-02-01",
+        "position": "Cobol consultant",
+        "projects": [{
+            "name": "Implement date changes for tax system"
+        }]
+    }, {
+        "company": "Teljoy",
+        "dateEnd": "2000-01-31",
+        "dateStart": "1998-02-01",
+        "position": "Cobol developer",
+        "projects": [{
+            "name": "Various reports and system maintenance"
+        }]
+    }, {
+        "company": "AS Transmissions and steering",
+        "dateEnd": "1998-01-31",
+        "dateStart": "1996-02-01",
+        "position": "Junior developer",
+        "projects": [{
+            "name": "System enhancement and report writing"
+        }]
+    }],
+    "education": [{
+        "institution": "Udemy",
+        "name": "AWS Certified Developer - Associate 2019",
+        "skills": [{ "category": "services", "skill": "AWS"}],
+        "year": 2019
+    }, {
+        "institution": "Udemy",
+        "name": "NodeJS - The complete guide",
+        "skills": [
+            { "category": "services", "skill": "node.js"},
+            { "category": "technologies", "skill": "JavaScript"}
+        ],
+        "year": 2019
+    }, {
+        "institution": "Udemy",
+        "name": "NativeScript + Angular",
+        "skills": [
+            { "category": "technologies", "skill": "Angular"},
+            { "category": "technologies", "skill": "NativeScript"}
+        ],
+        "year": 2019
+    }, {
+        "institution": "Udemy",
+        "name": "Angular 8 - The complete guide",
+        "skills": [{ "category": "technologies", "skill": "Angular"}],
+        "year": 2019
+    }, {
+        "institution": "Udemy",
+        "name": "Bash scripting",
+        "year": 2018
+    }, {
+        "institution": "Coursera",
+        "name": "Blockchain Specialization",
+        "year": 2018
+    }, {
+        "institution": "Coursera",
+        "name": "Economics of money and banking",
+        "skills": [
+            { "category": "industries", "skill": "Banking"},
+            { "category": "industries", "skill": "Finance"}
+        ],
+        "year": 2018
+    }, {
+        "institution": "Coursera",
+        "name": "The global finance crisis",
+        "skills": [{ "category": "industries", "skill": "Finance"}],
+        "year": 2018
+    }, {
+        "institution": "Coursera",
+        "name": "Private equity and venture capital",
+        "skills": [{ "category": "industries", "skill": "Finance"}],
+        "year": 2017
+    }, {
+        "description": "The history of sport and how it evolved to play a formative role in our modern society",
+        "institution": "Coursera",
+        "name": "Sports and society",
+        "year": 2016
+    }, {
+        "institution": "Coursera",
+        "name": "Using databases with Python",
+        "year": 2016
+    }, {
+        "description": "Hands on introductionary course into HTML, CSS and JavaScript",
+        "institution": "Coursera",
+        "name": "HTML, CSS and JavaScript",
+        "skills": [
+            { "category": "technologies", "skill": "HTML"},
+            { "category": "technologies", "skill": "CSS"},
+            { "category": "technologies", "skill": "JavaScript"}
+        ],
+        "year": 2015
+    }, {
+        "institution": "Coursera",
+        "name": "Introduction to big data",
+        "year": 2015
+    }, {
+        "institution": "Coursera",
+        "name": "Introduction to game design",
+        "year": 2014
+    }, {
+        "institution": "Coursera",
+        "name": "Using Python to access web data",
+        "year": 2014
+    }, {
+        "institution": "Coursera",
+        "name": "Developing innovative ideas for new companies",
+        "year": 2014
+    }, {
+        "institution": "Coursera",
+        "name": "Critical thinking in global challenges",
+        "year": 2013
+    }, {
+        "institution": "Coursera",
+        "name": "Leading strategic innovation in organizations",
+        "year": 2013
+    }, {
+        "institution": "Coursera",
+        "name": "Surviving disruptive technologies",
+        "year": 2013
+    }, {
+        "institution": "Coursera",
+        "name": "Building an information risk management toolkit",
+        "year": 2013
+    }, {
+        "institution": "Coursera",
+        "name": "Designing and executing information secrity strategies",
+        "year": 2013
+    }],
+    "profile": {
+        "contact": [{
+            "icon": "fa fa-envelope-o",
+            "link": "info@nicopretorius.com",
+            "type": "email"
+        }, {
+            "icon": "fa fa-linkedin",
+            "link": "https://www.linkedin.com/in/nicopretorius/",
+            "type": "link"
+        }, {
+            "icon": "fa fa-twitter",
+            "link": "https://twitter.com/nicopreto",
+            "type": "link"
+        }],
+        "fullName": "Nico Pretorius",
+        "image": "profile.jpg",
+        "introduction": [
+            "Whatever the size, scope or complexity, together we can get IT delivered."
+        ],
+        "title": "Technology Whisperer"
+    }
+}
