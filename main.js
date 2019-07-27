@@ -425,6 +425,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_educationPage_education_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./pages/educationPage/education.component */ "./src/app/pages/educationPage/education.component.ts");
 /* harmony import */ var _pages_skillsPage_skills_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./pages/skillsPage/skills.component */ "./src/app/pages/skillsPage/skills.component.ts");
 /* harmony import */ var _dashboard_modal_modal_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./dashboard/modal/modal.component */ "./src/app/dashboard/modal/modal.component.ts");
+/* harmony import */ var _services_data_data_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./services/data/data.service */ "./src/app/services/data/data.service.ts");
+/* harmony import */ var _services_word_word_export_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./services/word/word-export.service */ "./src/app/services/word/word-export.service.ts");
+/* harmony import */ var _services_api_api_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./services/api/api.service */ "./src/app/services/api/api.service.ts");
+/* harmony import */ var _services_util_arrayUtil_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./services/util/arrayUtil.service */ "./src/app/services/util/arrayUtil.service.ts");
+/* harmony import */ var _services_util_dateUtil_service__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./services/util/dateUtil.service */ "./src/app/services/util/dateUtil.service.ts");
+
+
+
+
+
 
 
 
@@ -461,7 +471,7 @@ var AppModule = /** @class */ (function () {
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"]
             ],
             exports: [_angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"]],
-            providers: [],
+            providers: [_services_api_api_service__WEBPACK_IMPORTED_MODULE_16__["ApiService"], _services_util_arrayUtil_service__WEBPACK_IMPORTED_MODULE_17__["ArrayUtilService"], _services_data_data_service__WEBPACK_IMPORTED_MODULE_14__["DataService"], _services_util_dateUtil_service__WEBPACK_IMPORTED_MODULE_18__["DateUtilService"], _services_word_word_export_service__WEBPACK_IMPORTED_MODULE_15__["WordExportService"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
         })
     ], AppModule);
@@ -490,7 +500,7 @@ module.exports = "\r\n.gutter {\r\n    margin-bottom: 15px;\r\n}\r\n\r\n.modal-c
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"container-fluid d-none d-md-block\">\r\n    <div class=\"row\">\r\n        <div class=\"col-md-3\">\r\n            <app-profile [data]=\"profile\" (wordDownload)=\"downloadWord()\"></app-profile>\r\n            <div style=\"margin-top: 15px\">\r\n                <app-education [data]=\"education\" [filterEnable]=\"filterEnable\" (clear)=\"clearFilter()\" (filterData)=\"filter($event)\"></app-education>\r\n            </div>\r\n        </div>\r\n        <div class=\"col-md-9\">\r\n            <div class=\"row\">\r\n                <app-stats class=\"col\" [data]=\"stats\"></app-stats>\r\n            </div>\r\n            <div class=\"row\">\r\n                <app-skills class=\"col\" [category]=\"category\" [data]=\"skills\" [filterEnable]=\"filterEnable\" (clear)=\"clearFilter()\" (select)=\"filter($event)\"></app-skills>\r\n                <app-work-experience class=\"col\" [data]=\"careers\" [filterEnable]=\"filterEnable\" (clear)=\"clearFilter()\" (filterData)=\"filter($event)\"></app-work-experience>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"container d-md-none no-padding\">\r\n    <div class=\"col no-padding gutter\"><app-profile [data]=\"profile\"></app-profile></div>\r\n    <div class=\"col no-padding gutter\"><app-stats [data]=\"stats\"></app-stats></div>\r\n    <div class=\"col no-padding gutter\"><app-skills class=\"col\" [category]=\"category\" [data]=\"skills\" [filterEnable]=\"filterEnable\" (clear)=\"clearFilter()\" (select)=\"filter($event)\"></app-skills></div>\r\n    <div class=\"col no-padding gutter\"><app-work-experience class=\"col\" [data]=\"careers\" [filterEnable]=\"filterEnable\" (clear)=\"clearFilter()\" (filterData)=\"filter($event)\"></app-work-experience></div>\r\n    <div class=\"col no-padding gutter\"><app-education [data]=\"education\" [filterEnable]=\"filterEnable\" (clear)=\"clearFilter()\" (filterData)=\"filter($event)\"></app-education></div>\r\n    <br><br><br><br><br>\r\n</div>\r\n\r\n<app-modal [visible]=\"showWordRenderModal\" (valid)=\"export($event)\" (visibleChanges)=\"close($event)\" heading=\"Select your export options\">\r\n    <table class=\"table table-hover text-primary\">\r\n        <tr class=\"show-pointer\" (click)=\"wordRenderOptions.hasIntroduction = !wordRenderOptions.hasIntroduction\">\r\n            <td class=\"modal-check\">\r\n                <i class=\"fa fa-square-o\" *ngIf=\"!wordRenderOptions.hasIntroduction\"></i>\r\n                <i class=\"fa fa-check-square-o\" *ngIf=\"wordRenderOptions.hasIntroduction\"></i>\r\n            </td>\r\n            <td>Introduction</td>\r\n        </tr>\r\n        <tr class=\"show-pointer\" (click)=\"wordRenderOptions.hasEducation = !wordRenderOptions.hasEducation\">\r\n            <td class=\"modal-check\">\r\n                <i class=\"fa fa-square-o\" *ngIf=\"!wordRenderOptions.hasEducation\"></i>\r\n                <i class=\"fa fa-check-square-o\" *ngIf=\"wordRenderOptions.hasEducation\"></i>\r\n            </td>\r\n            <td>Education</td>\r\n        </tr>\r\n        <tr class=\"show-pointer\" (click)=\"wordRenderOptions.hasExperience = !wordRenderOptions.hasExperience\">\r\n            <td class=\"modal-check\">\r\n                <i class=\"fa fa-square-o\" *ngIf=\"!wordRenderOptions.hasExperience\"></i>\r\n                <i class=\"fa fa-check-square-o\" *ngIf=\"wordRenderOptions.hasExperience\"></i>\r\n            </td>\r\n            <td>Experience</td>\r\n        </tr>\r\n        <tr class=\"show-pointer\" (click)=\"wordRenderOptions.hasSkills = !wordRenderOptions.hasSkills\">\r\n            <td class=\"modal-check\">\r\n                <i class=\"fa fa-square-o\" *ngIf=\"!wordRenderOptions.hasSkills\"></i>\r\n                <i class=\"fa fa-check-square-o\" *ngIf=\"wordRenderOptions.hasSkills\"></i>\r\n            </td>\r\n            <td>Skills</td>\r\n        </tr>\r\n        <tr class=\"show-pointer\" (click)=\"wordRenderOptions.hasSummary = !wordRenderOptions.hasSummary\">\r\n            <td class=\"modal-check\">\r\n                <i class=\"fa fa-square-o\" *ngIf=\"!wordRenderOptions.hasSummary\"></i>\r\n                <i class=\"fa fa-check-square-o\" *ngIf=\"wordRenderOptions.hasSummary\"></i>\r\n            </td>\r\n            <td>Summary</td>\r\n        </tr>\r\n    </table>\r\n</app-modal>"
+module.exports = "\r\n<div class=\"container-fluid d-none d-md-block\">\r\n    <div class=\"row\">\r\n        <div class=\"col-md-3\">\r\n            <app-profile (wordDownload)=\"downloadWord()\"></app-profile>\r\n            <div style=\"margin-top: 15px\">\r\n                <app-education></app-education>\r\n            </div>\r\n        </div>\r\n        <div class=\"col-md-9\">\r\n            <div class=\"row\">\r\n                <app-stats class=\"col\"></app-stats>\r\n            </div>\r\n            <div class=\"row\">\r\n                <app-skills class=\"col\"></app-skills>\r\n                <app-work-experience class=\"col\"></app-work-experience>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"container d-md-none no-padding\">\r\n    <div class=\"col no-padding gutter\"><app-profile (wordDownload)=\"downloadWord()\"></app-profile></div>\r\n    <div class=\"col no-padding gutter\"><app-stats></app-stats></div>\r\n    <div class=\"col no-padding gutter\"><app-skills class=\"col\"></app-skills></div>\r\n    <div class=\"col no-padding gutter\"><app-work-experience class=\"col\"></app-work-experience></div>\r\n    <div class=\"col no-padding gutter\"><app-education></app-education></div>\r\n    <br><br><br><br><br>\r\n</div>\r\n\r\n<app-modal [visible]=\"showWordRenderModal\" (valid)=\"export($event)\" (visibleChanges)=\"close($event)\" heading=\"Select your export options\">\r\n    <table class=\"table table-hover text-primary\">\r\n        <tr class=\"show-pointer\" (click)=\"wordRenderOptions.hasIntroduction = !wordRenderOptions.hasIntroduction\">\r\n            <td class=\"modal-check\">\r\n                <i class=\"fa fa-square-o\" *ngIf=\"!wordRenderOptions.hasIntroduction\"></i>\r\n                <i class=\"fa fa-check-square-o\" *ngIf=\"wordRenderOptions.hasIntroduction\"></i>\r\n            </td>\r\n            <td>Introduction</td>\r\n        </tr>\r\n        <tr class=\"show-pointer\" (click)=\"wordRenderOptions.hasEducation = !wordRenderOptions.hasEducation\">\r\n            <td class=\"modal-check\">\r\n                <i class=\"fa fa-square-o\" *ngIf=\"!wordRenderOptions.hasEducation\"></i>\r\n                <i class=\"fa fa-check-square-o\" *ngIf=\"wordRenderOptions.hasEducation\"></i>\r\n            </td>\r\n            <td>Education</td>\r\n        </tr>\r\n        <tr class=\"show-pointer\" (click)=\"wordRenderOptions.hasExperience = !wordRenderOptions.hasExperience\">\r\n            <td class=\"modal-check\">\r\n                <i class=\"fa fa-square-o\" *ngIf=\"!wordRenderOptions.hasExperience\"></i>\r\n                <i class=\"fa fa-check-square-o\" *ngIf=\"wordRenderOptions.hasExperience\"></i>\r\n            </td>\r\n            <td>Experience</td>\r\n        </tr>\r\n        <tr class=\"show-pointer\" (click)=\"wordRenderOptions.hasSkills = !wordRenderOptions.hasSkills\">\r\n            <td class=\"modal-check\">\r\n                <i class=\"fa fa-square-o\" *ngIf=\"!wordRenderOptions.hasSkills\"></i>\r\n                <i class=\"fa fa-check-square-o\" *ngIf=\"wordRenderOptions.hasSkills\"></i>\r\n            </td>\r\n            <td>Skills</td>\r\n        </tr>\r\n        <tr class=\"show-pointer\" (click)=\"wordRenderOptions.hasSummary = !wordRenderOptions.hasSummary\">\r\n            <td class=\"modal-check\">\r\n                <i class=\"fa fa-square-o\" *ngIf=\"!wordRenderOptions.hasSummary\"></i>\r\n                <i class=\"fa fa-check-square-o\" *ngIf=\"wordRenderOptions.hasSummary\"></i>\r\n            </td>\r\n            <td>Summary</td>\r\n        </tr>\r\n    </table>\r\n</app-modal>"
 
 /***/ }),
 
@@ -507,18 +517,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _services_word_export_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/word-export.service */ "./src/app/services/word-export.service.ts");
+/* harmony import */ var _services_word_word_export_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/word/word-export.service */ "./src/app/services/word/word-export.service.ts");
+/* harmony import */ var _services_data_data_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/data/data.service */ "./src/app/services/data/data.service.ts");
+
 
 
 
 
 var DashboardComponent = /** @class */ (function () {
-    function DashboardComponent(http, wordExport) {
+    function DashboardComponent(dataService, http, wordExport) {
+        this.dataService = dataService;
         this.http = http;
         this.wordExport = wordExport;
         this.currentSkill = '';
         this.filterEnable = false;
         this.category = 'technologies';
+        this.careers = [];
+        this.education = [];
         this.stats = [];
         this.showWordRenderModal = false;
         this.wordRenderOptions = {
@@ -532,24 +547,20 @@ var DashboardComponent = /** @class */ (function () {
     }
     DashboardComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.http.get('assets/resume.json').subscribe(function (response) {
-            _this.original = response;
-            _this.populateData(response);
-        });
+        this.loadData();
         this.wordExport.download.subscribe(function (input) { return _this.downloadFile(input); });
     };
-    DashboardComponent.prototype.clearFilter = function () {
-        this.currentSkill = '';
-        this.filterEnable = false;
-        this.original.careers.forEach(function (item) { return item.detail = false; });
-        this.original.education.forEach(function (item) { return item.detail = false; });
-        this.populateData(this.original);
+    DashboardComponent.prototype.loadData = function () {
+        var _this = this;
+        this.dataService.init().subscribe(function (response) {
+            _this.original = response;
+            _this.dataService.setOriginalData(response);
+        });
     };
     DashboardComponent.prototype.close = function () {
         this.showWordRenderModal = false;
     };
     DashboardComponent.prototype.downloadFile = function (input) {
-        var blob = new Blob([input.content], { type: 'application/msword' });
         var anchor = document.createElement('a');
         anchor.href = URL.createObjectURL(input.content);
         anchor.download = input.fileName;
@@ -560,180 +571,14 @@ var DashboardComponent = /** @class */ (function () {
     };
     DashboardComponent.prototype.export = function (input) {
         this.showWordRenderModal = input;
-        this.wordExport.createDoc({ careers: this.careers, education: this.education, filter: this.currentSkill,
-            introduction: this.original.introduction, profile: this.profile, skills: this.skills, summary: this.original.summary }, this.wordRenderOptions);
-    };
-    DashboardComponent.prototype.filter = function (item) {
-        var _this = this;
-        this.category = item.category;
-        this.currentSkill = item.skill;
-        this.filterEnable = true;
-        var careers = JSON.parse(JSON.stringify(this.original.careers)).reduce(function (array, career) {
-            if (_this._validItem(career, item.category, item.skill)) {
-                career.detail = true;
-                array.push(career);
-            }
-            return array;
-        }, []);
-        var education = JSON.parse(JSON.stringify(this.original.education)).reduce(function (array, course) {
-            if (_this._validSkill(course, item.skill)) {
-                course.detail = true;
-                array.push(course);
-            }
-            return array;
-        }, []);
-        this.populateData({ careers: careers, education: education, profile: this.profile });
-    };
-    DashboardComponent.prototype.populateData = function (data) {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var _a;
-            var _this = this;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        _a = this;
-                        return [4 /*yield*/, this._populateCareers(data.careers)];
-                    case 1:
-                        _a.careers = _b.sent();
-                        this.skills = this.careers.reduce(function (res, item) {
-                            res.industries = _this._populateItem(res.industries, item.industry, item.months);
-                            res.project = _this._populateArray(res.project, _this._reduceCategories(item.projects, 'project'), item.months);
-                            res.services = _this._populateArray(res.services, _this._reduceCategories(item.projects, 'services'), item.months);
-                            res.technologies = _this._populateArray(res.technologies, _this._reduceCategories(item.projects, 'technologies'), item.months);
-                            return res;
-                        }, { industries: [], project: [], services: [], technologies: [] });
-                        this.education = data.education.map(function (course) {
-                            course.detail = course.detail ? course.detail : false;
-                            return course;
-                        });
-                        this.profile = data.profile;
-                        this.stats = [
-                            this._statsYears(this.careers ? Math.floor(this.careers.reduce(function (sum, item) {
-                                sum += item.months;
-                                return sum;
-                            }, 0) / 12) : 0),
-                            this._statsCourses(this.education),
-                            this._statsProjects(this.careers ? this.careers.reduce(function (sum, item) {
-                                sum += item.projects ? item.projects.length : 0;
-                                return sum;
-                            }, 0) : 0)
-                        ];
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    DashboardComponent.prototype._calcDate = function (dateString) {
-        var dateArray = dateString.split('-');
-        return new Date(dateArray[0], parseInt(dateArray[1]) - 1, dateArray[2]);
-    };
-    DashboardComponent.prototype._calcMonths = function (start, end) {
-        return ((end.getFullYear() - start.getFullYear()) * 12) + (end.getMonth() - start.getMonth()) + 1;
-    };
-    DashboardComponent.prototype._populateArray = function (array, skills, value) {
-        var _this = this;
-        if (!skills) {
-            return array;
-        }
-        skills.forEach(function (skill) {
-            array = _this._populateItem(array, skill, value);
-        });
-        return array;
-    };
-    DashboardComponent.prototype._populateCareers = function (array) {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var _this = this;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                return [2 /*return*/, array ? array.map(function (item) {
-                        if (!item.months) {
-                            item.dateEnd = item.dateEnd ? _this._calcDate(item.dateEnd) : new Date();
-                            item.dateStart = item.dateStart ? _this._calcDate(item.dateStart) : new Date();
-                            item.months = _this._calcMonths(item.dateStart, item.dateEnd);
-                        }
-                        item.detail = item.detail ? item.detail : false;
-                        return item;
-                    }) : []];
-            });
-        });
-    };
-    DashboardComponent.prototype._populateItem = function (array, skill, value) {
-        if (!skill) {
-            return array;
-        }
-        var item = array.find(function (item) { return item.name === skill; });
-        item ? item.months += value : array.push({ name: skill, months: value });
-        return array;
-    };
-    DashboardComponent.prototype._reduceCategories = function (array, key) {
-        if (!array) {
-            return [];
-        }
-        return array.filter(function (item) { return item[key]; }).map(function (item) { return item[key]; }).flat().reduce(function (res, item) {
-            if (res.indexOf(item) < 0) {
-                res.push(item);
-            }
-            return res;
-        }, []);
-    };
-    DashboardComponent.prototype._statsCourses = function (array) {
-        return {
-            description: array.length === 0 ? 'Maybe soon.' : array.length > 1 ? 'Distance learning' : "Through " + array[0].institution,
-            metric: array.length === 0 ? 'No formal courses' : array.length > 1 ? 'Courses' : 'Course',
-            type: 'secondary',
-            value: array.length > 0 ? array.length : ''
-        };
-    };
-    ;
-    DashboardComponent.prototype._statsProjects = function (years) {
-        return {
-            description: years > 0 ? 'Successfully delivered' : 'But hopefully soon',
-            metric: years === 0 ? 'No projects yet' : years > 1 ? 'Projects' : 'Project',
-            type: 'success',
-            value: years > 0 ? years : ''
-        };
-    };
-    ;
-    DashboardComponent.prototype._statsYears = function (years) {
-        return {
-            description: this.filterEnable ? this.currentSkill + " experience" : 'Total work experience',
-            metric: years === 0 ? '' : years > 1 ? 'Years' : 'Year',
-            type: 'info',
-            value: years > 0 ? years : 'No'
-        };
-    };
-    ;
-    DashboardComponent.prototype._validItem = function (item, category, skill) {
-        if (category === 'industries') {
-            return item.industry === skill;
-        }
-        var result = false;
-        if (item.projects) {
-            item.projects.forEach(function (project) {
-                if (project[category] && project[category].indexOf(skill) > -1) {
-                    result = true;
-                }
-            });
-        }
-        return result;
-    };
-    DashboardComponent.prototype._validSkill = function (course, skill) {
-        var valid = false;
-        if (course.skills) {
-            course.skills.forEach(function (it) {
-                if (it.skill === skill) {
-                    valid = true;
-                }
-            });
-        }
-        return valid;
+        this.wordExport.createDoc(this.dataService.currentSkill, this.wordRenderOptions);
     };
     DashboardComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             template: __webpack_require__(/*! ./dashboard.component.html */ "./src/app/dashboard/dashboard.component.html"),
-            providers: [_services_word_export_service__WEBPACK_IMPORTED_MODULE_3__["WordExportService"]],
             styles: [__webpack_require__(/*! ./dashboard.component.css */ "./src/app/dashboard/dashboard.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _services_word_export_service__WEBPACK_IMPORTED_MODULE_3__["WordExportService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_data_data_service__WEBPACK_IMPORTED_MODULE_4__["DataService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _services_word_word_export_service__WEBPACK_IMPORTED_MODULE_3__["WordExportService"]])
     ], DashboardComponent);
     return DashboardComponent;
 }());
@@ -859,7 +704,7 @@ module.exports = "\r\ni {\r\n    cursor: pointer;\r\n}\r\n\r\n.badge {\r\n    cu
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"card\">\r\n    <div class=\"card-header text-white bg-secondary\">Education<small class=\"float-right questrial\" *ngIf=\"filterEnable\" (click)=\"clearFilter()\">Clear filter</small></div>\r\n    <div class=\"card-body\">\r\n        <div class=\"card-text\">\r\n            <div class=\"block\" *ngFor=\"let item of data\" (click)=\"toggleDisplay(item)\">\r\n                <h5 class=\"text-secondary\">{{ item.name }}</h5>\r\n                <div class=\"d-flex\" style=\"width: 100%\">\r\n                    <p class=\"text-muted\">{{ item.institution }} ({{ item.year }})</p>\r\n                    <p class=\"position-right\" *ngIf=\"item.detail || item.skills\"><i class=\"fa fa-plus text-muted\" *ngIf=\"!item.detail\"></i><i class=\"fa fa-minus text-muted\" *ngIf=\"item.detail\"></i></p>\r\n                </div>\r\n                <div *ngIf=\"item.detail\">\r\n                    <p class=\"text-info\">{{ item.description }}</p>\r\n                    <div><span class=\"badge badge-secondary\" *ngFor=\"let badge of item.skills\" (click)=\"filter(badge)\">{{ badge.skill }}</span></div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
+module.exports = "\r\n<div class=\"card\" *ngIf=\"data\">\r\n    <div class=\"card-header text-white bg-secondary\">Education<small class=\"float-right questrial\" *ngIf=\"filterEnable\" (click)=\"clearFilter()\">Clear filter</small></div>\r\n    <div class=\"card-body\">\r\n        <div class=\"card-text\">\r\n            <div class=\"block\" *ngFor=\"let item of data\" (click)=\"toggleDisplay(item)\">\r\n                <h5 class=\"text-secondary\">{{ item.name }}</h5>\r\n                <div class=\"d-flex\" style=\"width: 100%\">\r\n                    <p class=\"text-muted\">{{ item.institution }} ({{ item.year }})</p>\r\n                    <p class=\"position-right\" *ngIf=\"item.detail || item.skills\"><i class=\"fa fa-plus text-muted\" *ngIf=\"!item.detail\"></i><i class=\"fa fa-minus text-muted\" *ngIf=\"item.detail\"></i></p>\r\n                </div>\r\n                <div *ngIf=\"item.detail\">\r\n                    <p class=\"text-info\">{{ item.description }}</p>\r\n                    <div><span class=\"badge badge-secondary\" *ngFor=\"let badge of item.skills\" (click)=\"filter(badge)\">{{ badge.skill }}</span></div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -875,45 +720,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EducationComponent", function() { return EducationComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var src_app_services_data_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/data/data.service */ "./src/app/services/data/data.service.ts");
+
 
 
 var EducationComponent = /** @class */ (function () {
-    function EducationComponent() {
+    function EducationComponent(dataService) {
+        this.dataService = dataService;
         this.filterEnable = false;
-        this.clear = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
-        this.filterData = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
     }
+    EducationComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.dataService.educationSubject.subscribe(function (result) { return _this.data = result; });
+        this.dataService.filterEnableSubject.subscribe(function (result) { return _this.filterEnable = result; });
+    };
     EducationComponent.prototype.clearFilter = function () {
-        this.clear.emit();
+        this.dataService.clearFilter();
+        this.filterEnable = false;
     };
     EducationComponent.prototype.filter = function (item) {
-        this.filterData.next(item);
+        this.dataService.filterData(item);
+        this.filterEnable = true;
     };
     EducationComponent.prototype.toggleDisplay = function (item) {
         item.detail = !item.detail;
     };
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-    ], EducationComponent.prototype, "data", void 0);
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Boolean)
-    ], EducationComponent.prototype, "filterEnable", void 0);
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-    ], EducationComponent.prototype, "clear", void 0);
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-    ], EducationComponent.prototype, "filterData", void 0);
     EducationComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-education',
             template: __webpack_require__(/*! ./education.component.html */ "./src/app/pages/educationPage/education.component.html"),
             styles: [__webpack_require__(/*! ./education.component.css */ "./src/app/pages/educationPage/education.component.css")]
-        })
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_data_data_service__WEBPACK_IMPORTED_MODULE_2__["DataService"]])
     ], EducationComponent);
     return EducationComponent;
 }());
@@ -929,7 +767,7 @@ var EducationComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n.card-footer {\r\n    font-size: 200%;\r\n}\r\n\r\n.card-text {\r\n    font-family: 'Questrial', sans-serif;\r\n    font-weight: 600;\r\n}\r\n\r\n.card-text h4 {\r\n    padding-top: 12px;\r\n}\r\n\r\n.download-link {\r\n    cursor: pointer;\r\n}\r\n\r\n.download-link span {\r\n    text-decoration: none;\r\n}\r\n\r\n.download-link span:hover {\r\n    text-decoration: underline;\r\n}\r\n\r\n.spacing-right {\r\n    margin-right: 6px;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvcHJvZmlsZVBhZ2UvcHJvZmlsZS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTtJQUNJLGdCQUFnQjtDQUNuQjs7QUFFRDtJQUNJLHFDQUFxQztJQUNyQyxpQkFBaUI7Q0FDcEI7O0FBRUQ7SUFDSSxrQkFBa0I7Q0FDckI7O0FBRUQ7SUFDSSxnQkFBZ0I7Q0FDbkI7O0FBRUQ7SUFDSSxzQkFBc0I7Q0FDekI7O0FBRUQ7SUFDSSwyQkFBMkI7Q0FDOUI7O0FBRUQ7SUFDSSxrQkFBa0I7Q0FDckIiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9wcm9maWxlUGFnZS9wcm9maWxlLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxuLmNhcmQtZm9vdGVyIHtcclxuICAgIGZvbnQtc2l6ZTogMjAwJTtcclxufVxyXG5cclxuLmNhcmQtdGV4dCB7XHJcbiAgICBmb250LWZhbWlseTogJ1F1ZXN0cmlhbCcsIHNhbnMtc2VyaWY7XHJcbiAgICBmb250LXdlaWdodDogNjAwO1xyXG59XHJcblxyXG4uY2FyZC10ZXh0IGg0IHtcclxuICAgIHBhZGRpbmctdG9wOiAxMnB4O1xyXG59XHJcblxyXG4uZG93bmxvYWQtbGluayB7XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbn1cclxuXHJcbi5kb3dubG9hZC1saW5rIHNwYW4ge1xyXG4gICAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xyXG59XHJcblxyXG4uZG93bmxvYWQtbGluayBzcGFuOmhvdmVyIHtcclxuICAgIHRleHQtZGVjb3JhdGlvbjogdW5kZXJsaW5lO1xyXG59XHJcblxyXG4uc3BhY2luZy1yaWdodCB7XHJcbiAgICBtYXJnaW4tcmlnaHQ6IDZweDtcclxufVxyXG4iXX0= */"
+module.exports = "\r\n.card-body > img {\r\n    margin-bottom: 12px;\r\n    max-width: 200px;\r\n}\r\n\r\n.card-footer {\r\n    font-size: 160%;\r\n    overflow: hidden;\r\n}\r\n\r\n.card-text {\r\n    font-family: 'Questrial', sans-serif;\r\n    font-weight: 600;\r\n}\r\n\r\n.card-text h4 {\r\n    padding-top: 12px;\r\n}\r\n\r\n.download-link {\r\n    cursor: pointer;\r\n}\r\n\r\n.download-link span {\r\n    text-decoration: none;\r\n}\r\n\r\n.download-link span:hover {\r\n    text-decoration: underline;\r\n}\r\n\r\n.spacing-right {\r\n    margin-right: 6px;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvcHJvZmlsZVBhZ2UvcHJvZmlsZS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTtJQUNJLG9CQUFvQjtJQUNwQixpQkFBaUI7Q0FDcEI7O0FBRUQ7SUFDSSxnQkFBZ0I7SUFDaEIsaUJBQWlCO0NBQ3BCOztBQUVEO0lBQ0kscUNBQXFDO0lBQ3JDLGlCQUFpQjtDQUNwQjs7QUFFRDtJQUNJLGtCQUFrQjtDQUNyQjs7QUFFRDtJQUNJLGdCQUFnQjtDQUNuQjs7QUFFRDtJQUNJLHNCQUFzQjtDQUN6Qjs7QUFFRDtJQUNJLDJCQUEyQjtDQUM5Qjs7QUFFRDtJQUNJLGtCQUFrQjtDQUNyQiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3Byb2ZpbGVQYWdlL3Byb2ZpbGUuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxyXG4uY2FyZC1ib2R5ID4gaW1nIHtcclxuICAgIG1hcmdpbi1ib3R0b206IDEycHg7XHJcbiAgICBtYXgtd2lkdGg6IDIwMHB4O1xyXG59XHJcblxyXG4uY2FyZC1mb290ZXIge1xyXG4gICAgZm9udC1zaXplOiAxNjAlO1xyXG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcclxufVxyXG5cclxuLmNhcmQtdGV4dCB7XHJcbiAgICBmb250LWZhbWlseTogJ1F1ZXN0cmlhbCcsIHNhbnMtc2VyaWY7XHJcbiAgICBmb250LXdlaWdodDogNjAwO1xyXG59XHJcblxyXG4uY2FyZC10ZXh0IGg0IHtcclxuICAgIHBhZGRpbmctdG9wOiAxMnB4O1xyXG59XHJcblxyXG4uZG93bmxvYWQtbGluayB7XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbn1cclxuXHJcbi5kb3dubG9hZC1saW5rIHNwYW4ge1xyXG4gICAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xyXG59XHJcblxyXG4uZG93bmxvYWQtbGluayBzcGFuOmhvdmVyIHtcclxuICAgIHRleHQtZGVjb3JhdGlvbjogdW5kZXJsaW5lO1xyXG59XHJcblxyXG4uc3BhY2luZy1yaWdodCB7XHJcbiAgICBtYXJnaW4tcmlnaHQ6IDZweDtcclxufVxyXG4iXX0= */"
 
 /***/ }),
 
@@ -956,19 +794,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProfileComponent", function() { return ProfileComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var src_app_services_data_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/data/data.service */ "./src/app/services/data/data.service.ts");
+
 
 
 var ProfileComponent = /** @class */ (function () {
-    function ProfileComponent() {
+    function ProfileComponent(dataService) {
+        this.dataService = dataService;
         this.wordDownload = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
     }
+    ProfileComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.dataService.profileSubject.subscribe(function (result) {
+            _this.data = result;
+        });
+    };
     ProfileComponent.prototype.downloadWord = function () {
         this.wordDownload.next();
     };
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-    ], ProfileComponent.prototype, "data", void 0);
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
@@ -978,7 +821,8 @@ var ProfileComponent = /** @class */ (function () {
             selector: 'app-profile',
             template: __webpack_require__(/*! ./profile.component.html */ "./src/app/pages/profilePage/profile.component.html"),
             styles: [__webpack_require__(/*! ./profile.component.css */ "./src/app/pages/profilePage/profile.component.css")]
-        })
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_data_data_service__WEBPACK_IMPORTED_MODULE_2__["DataService"]])
     ], ProfileComponent);
     return ProfileComponent;
 }());
@@ -1005,7 +849,7 @@ module.exports = "\r\nh5 {\r\n    cursor: pointer;\r\n}\r\n\r\ntd {\r\n    curso
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div>\r\n    <canvas #lineChart>{{ chart }}</canvas>\r\n</div>\r\n\r\n<div class=\"card\">\r\n    <div class=\"card-header text-white bg-warning\">{{ heading[category] }}<small class=\"float-right questrial\" *ngIf=\"filterEnable\" (click)=\"clearFilter()\">Clear filter</small></div>\r\n    <div class=\"card-body\">\r\n        <ul class=\"nav nav-tabs nav-fill\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-warning\" (click)=\"setList('technologies')\">Technologies</a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-warning\" (click)=\"setList('services')\">Services</a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-warning\" (click)=\"setList('project')\">Projects</a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-warning\" (click)=\"setList('industries')\">Industries</a>\r\n            </li>\r\n        </ul>\r\n        <table class=\"table table-hover\">\r\n            <thead>\r\n                <tr>\r\n                    <th scope=\"col\">&nbsp;</th>\r\n                    <th scope=\"col text-right\" style=\"text-align: right\">years</th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr *ngFor=\"let item of list\">\r\n                    <td class=\"text-warning\"><h5 (click)=\"selectSkill(item.name)\">{{ item.name }}</h5></td>\r\n                    <td class=\"text-right\">{{ item.years }}</td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n</div>\r\n"
+module.exports = "\r\n<div>\r\n    <canvas #lineChart>{{ chart }}</canvas>\r\n</div>\r\n\r\n<div class=\"card\">\r\n    <div class=\"card-header text-white bg-warning\">{{ heading[category] }}<small class=\"float-right questrial\" *ngIf=\"filterEnable\" (click)=\"clearFilter()\">Clear filter</small></div>\r\n    <div class=\"card-body\">\r\n        <ul class=\"nav nav-tabs nav-fill\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-warning\" (click)=\"setList('technologies')\">Technologies</a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-warning\" (click)=\"setList('services')\">Services</a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-warning\" (click)=\"setList('project')\">Projects</a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-warning\" (click)=\"setList('industries')\">Industries</a>\r\n            </li>\r\n        </ul>\r\n        <table class=\"table table-hover\">\r\n            <thead>\r\n                <tr>\r\n                    <th scope=\"col\">&nbsp;</th>\r\n                    <th scope=\"col text-right\" style=\"text-align: right\">years</th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr *ngFor=\"let item of list\">\r\n                    <td class=\"text-warning\"><h5 (click)=\"filter(item.name)\">{{ item.name }}</h5></td>\r\n                    <td class=\"text-right\">{{ item.years }}</td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1023,11 +867,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/Chart.js");
 /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(chart_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var src_app_services_data_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/data/data.service */ "./src/app/services/data/data.service.ts");
+
 
 
 
 var SkillsComponent = /** @class */ (function () {
-    function SkillsComponent() {
+    function SkillsComponent(dataService) {
+        this.dataService = dataService;
         this.category = 'technologies';
         this.filterEnable = false;
         this.clear = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
@@ -1039,22 +886,26 @@ var SkillsComponent = /** @class */ (function () {
             technologies: 'Technology skills'
         };
     }
-    SkillsComponent.prototype.ngOnChanges = function () {
+    SkillsComponent.prototype.ngOnInit = function () {
         var _this = this;
-        if (this.data) {
-            Object.keys(this.data).forEach(function (key) {
+        this.dataService.filterEnableSubject.subscribe(function (result) { return _this.filterEnable = result; });
+        this.dataService.skillsSubject.subscribe(function (result) {
+            _this.data = result;
+            Object.keys(_this.data).forEach(function (key) {
                 _this.data[key].forEach(function (item) {
                     item.years = Math.ceil(item.months / 12);
                 });
             });
-            this.setList(this.category);
-        }
+            _this.setList(_this.category);
+        });
     };
     SkillsComponent.prototype.clearFilter = function () {
-        this.clear.emit();
+        this.dataService.clearFilter();
+        this.filterEnable = false;
     };
-    SkillsComponent.prototype.selectSkill = function (skill) {
-        this.select.next({ category: this.category, skill: skill });
+    SkillsComponent.prototype.filter = function (skill) {
+        this.dataService.filterData({ category: this.category, skill: skill });
+        this.filterEnable = true;
     };
     SkillsComponent.prototype.setList = function (item) {
         this.category = item;
@@ -1094,18 +945,6 @@ var SkillsComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
     ], SkillsComponent.prototype, "chartRef", void 0);
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-    ], SkillsComponent.prototype, "category", void 0);
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-    ], SkillsComponent.prototype, "data", void 0);
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-    ], SkillsComponent.prototype, "filterEnable", void 0);
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
     ], SkillsComponent.prototype, "clear", void 0);
@@ -1118,7 +957,8 @@ var SkillsComponent = /** @class */ (function () {
             selector: 'app-skills',
             template: __webpack_require__(/*! ./skills.component.html */ "./src/app/pages/skillsPage/skills.component.html"),
             styles: [__webpack_require__(/*! ./skills.component.css */ "./src/app/pages/skillsPage/skills.component.css")]
-        })
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_data_data_service__WEBPACK_IMPORTED_MODULE_3__["DataService"]])
     ], SkillsComponent);
     return SkillsComponent;
 }());
@@ -1145,7 +985,7 @@ module.exports = "\r\nh2 {\r\n    font-family: 'Rubik Mono One', sans-serif;\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"container-fluid d-none d-md-block\">\r\n    <div class=\"row\">\r\n        <div class=\"col\" *ngFor=\"let item of data\">\r\n            <div class=\"card\">\r\n                <div class=\"card-heading text-white\" [ngClass]=\"{'bg-info': item.type == 'info', 'bg-secondary': item.type == 'secondary', 'bg-success': item.type == 'success', 'bg-warning': item.type == 'warning'}\">\r\n                    <h2>{{ item.value }}<small>{{ item.metric }}</small></h2>\r\n                </div>\r\n                <div class=\"card-footer text-white\" [ngClass]=\"{'bg-info-dark': item.type == 'info', 'bg-secondary-dark': item.type == 'secondary', 'bg-success-dark': item.type == 'success', 'bg-warning-dark': item.type == 'warning'}\">{{ item.description }}</div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"container no-padding d-md-none\">\r\n    <div class=\"col no-padding\" *ngFor=\"let item of data\">\r\n        <div class=\"card\">\r\n            <div class=\"card-heading text-white\" [ngClass]=\"{'bg-info': item.type == 'info', 'bg-secondary': item.type == 'secondary', 'bg-success': item.type == 'success', 'bg-warning': item.type == 'warning'}\">\r\n                <h2>{{ item.value }}<small>{{ item.metric }}</small></h2>\r\n            </div>\r\n            <div class=\"card-footer text-white\" [ngClass]=\"{'bg-info-dark': item.type == 'info', 'bg-secondary-dark': item.type == 'secondary', 'bg-success-dark': item.type == 'success', 'bg-warning-dark': item.type == 'warning'}\">{{ item.description }}</div>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
+module.exports = "\r\n<div class=\"container-fluid d-none d-md-block\" *ngIf=\"data\">\r\n    <div class=\"row\">\r\n        <div class=\"col\" *ngFor=\"let item of data\">\r\n            <div class=\"card\">\r\n                <div class=\"card-heading text-white\" [ngClass]=\"{'bg-info': item.type == 'info', 'bg-secondary': item.type == 'secondary', 'bg-success': item.type == 'success', 'bg-warning': item.type == 'warning'}\">\r\n                    <h2>{{ item.value }}<small>{{ item.metric }}</small></h2>\r\n                </div>\r\n                <div class=\"card-footer text-white\" [ngClass]=\"{'bg-info-dark': item.type == 'info', 'bg-secondary-dark': item.type == 'secondary', 'bg-success-dark': item.type == 'success', 'bg-warning-dark': item.type == 'warning'}\">{{ item.description }}</div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"container no-padding d-md-none\" *ngIf=\"data\">\r\n    <div class=\"col no-padding\" *ngFor=\"let item of data\">\r\n        <div class=\"card\">\r\n            <div class=\"card-heading text-white\" [ngClass]=\"{'bg-info': item.type == 'info', 'bg-secondary': item.type == 'secondary', 'bg-success': item.type == 'success', 'bg-warning': item.type == 'warning'}\">\r\n                <h2>{{ item.value }}<small>{{ item.metric }}</small></h2>\r\n            </div>\r\n            <div class=\"card-footer text-white\" [ngClass]=\"{'bg-info-dark': item.type == 'info', 'bg-secondary-dark': item.type == 'secondary', 'bg-success-dark': item.type == 'success', 'bg-warning-dark': item.type == 'warning'}\">{{ item.description }}</div>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1161,21 +1001,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StatsComponent", function() { return StatsComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var src_app_services_data_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/data/data.service */ "./src/app/services/data/data.service.ts");
+
 
 
 var StatsComponent = /** @class */ (function () {
-    function StatsComponent() {
+    function StatsComponent(dataService) {
+        this.dataService = dataService;
     }
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-    ], StatsComponent.prototype, "data", void 0);
+    StatsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.dataService.statsSubject.subscribe(function (result) {
+            _this.data = result;
+        });
+    };
     StatsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-stats',
             template: __webpack_require__(/*! ./stats.component.html */ "./src/app/pages/statsPage/stats.component.html"),
             styles: [__webpack_require__(/*! ./stats.component.css */ "./src/app/pages/statsPage/stats.component.css")]
-        })
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_data_data_service__WEBPACK_IMPORTED_MODULE_2__["DataService"]])
     ], StatsComponent);
     return StatsComponent;
 }());
@@ -1202,7 +1048,7 @@ module.exports = "\r\ni {\r\n    cursor: pointer;\r\n}\r\n\r\n.badge {\r\n    cu
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"card\">\r\n    <div class=\"card-header text-white bg-info\">Work experience<small class=\"float-right questrial\" *ngIf=\"filterEnable\" (click)=\"clearFilter()\">Clear filter</small></div>\r\n    <div class=\"card-body\">\r\n        <div class=\"card-text\">\r\n            <div class=\"block\" *ngFor=\"let item of data\" (click)=\"toggleDisplay(item)\">\r\n                <h5 class=\"text-info\">{{ item.position }}</h5>\r\n                <h6 class=\"text-muted\">{{ item.company }}<small class=\"text-info float-right\">{{ item.months }} Months</small></h6>\r\n                <div class=\"d-flex\" style=\"width: 100%\">\r\n                    <p class=\"text-muted\">{{ item.dateStart | date: 'MMM yyyy' }} - {{ item.dateEnd | date: 'MMM yyyy' }}</p>\r\n                    <p class=\"position-right\"><i class=\"fa fa-plus text-muted\" *ngIf=\"!item.detail\"></i><i class=\"fa fa-minus text-muted\" *ngIf=\"item.detail\"></i></p>\r\n                </div>\r\n                <div *ngIf=\"item.detail\">\r\n                    <p><span class=\"badge badge-secondary\" (click)=\"filter('industries', item.industry)\">{{ item.industry }}</span></p>\r\n                    <div *ngFor=\"let project of item.projects\">\r\n                        <p class=\"text-success bigger\">{{ project.name }}</p>\r\n                        <div class=\"left-gutter\">\r\n                            <p class=\"text-muted\">Project: <span class=\"badge badge-secondary\" *ngFor=\"let badge of project.project\" (click)=\"filter('project', badge)\">{{ badge }}</span></p>\r\n                            <p class=\"text-muted\">Services: <span class=\"badge badge-secondary\" *ngFor=\"let badge of project.services\" (click)=\"filter('services', badge)\">{{ badge }}</span></p>\r\n                            <p class=\"text-muted\">Technologies: <span class=\"badge badge-secondary\" *ngFor=\"let badge of project.technologies\" (click)=\"filter('technologies', badge)\">{{ badge }}</span></p>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
+module.exports = "\r\n<div class=\"card\" *ngIf=\"data\">\r\n    <div class=\"card-header text-white bg-info\">Work experience<small class=\"float-right questrial\" *ngIf=\"filterEnable\" (click)=\"clearFilter()\">Clear filter</small></div>\r\n    <div class=\"card-body\">\r\n        <div class=\"card-text\">\r\n            <div class=\"block\" *ngFor=\"let item of data\" (click)=\"toggleDisplay(item)\">\r\n                <h5 class=\"text-info\">{{ item.position }}</h5>\r\n                <h6 class=\"text-muted\">{{ item.company }}<small class=\"text-info float-right\">{{ item.months }} Months</small></h6>\r\n                <div class=\"d-flex\" style=\"width: 100%\">\r\n                    <p class=\"text-muted\">{{ item.dateStart | date: 'MMM yyyy' }} - {{ item.dateEnd | date: 'MMM yyyy' }}</p>\r\n                    <p class=\"position-right\"><i class=\"fa fa-plus text-muted\" *ngIf=\"!item.detail\"></i><i class=\"fa fa-minus text-muted\" *ngIf=\"item.detail\"></i></p>\r\n                </div>\r\n                <div *ngIf=\"item.detail\">\r\n                    <p><span class=\"badge badge-secondary\" (click)=\"filter('industries', item.industry)\">{{ item.industry }}</span></p>\r\n                    <div *ngFor=\"let project of item.projects\">\r\n                        <p class=\"text-success bigger\">{{ project.name }}</p>\r\n                        <div class=\"left-gutter\">\r\n                            <p class=\"text-muted\">Project: <span class=\"badge badge-secondary\" *ngFor=\"let badge of project.project\" (click)=\"filter('project', badge)\">{{ badge }}</span></p>\r\n                            <p class=\"text-muted\">Services: <span class=\"badge badge-secondary\" *ngFor=\"let badge of project.services\" (click)=\"filter('services', badge)\">{{ badge }}</span></p>\r\n                            <p class=\"text-muted\">Technologies: <span class=\"badge badge-secondary\" *ngFor=\"let badge of project.technologies\" (click)=\"filter('technologies', badge)\">{{ badge }}</span></p>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1218,45 +1064,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WorkComponent", function() { return WorkComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var src_app_services_data_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/data/data.service */ "./src/app/services/data/data.service.ts");
+
 
 
 var WorkComponent = /** @class */ (function () {
-    function WorkComponent() {
+    function WorkComponent(dataService) {
+        this.dataService = dataService;
         this.filterEnable = false;
-        this.clear = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
-        this.filterData = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
     }
+    WorkComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.dataService.careerSubject.subscribe(function (result) { return _this.data = result; });
+        this.dataService.filterEnableSubject.subscribe(function (result) { return _this.filterEnable = result; });
+    };
     WorkComponent.prototype.clearFilter = function () {
-        this.clear.next();
+        this.dataService.clearFilter();
+        this.filterEnable = false;
     };
     WorkComponent.prototype.filter = function (category, skill) {
-        this.filterData.next({ category: category, skill: skill });
+        this.dataService.filterData({ category: category, skill: skill });
+        this.filterEnable = true;
     };
     WorkComponent.prototype.toggleDisplay = function (item) {
         item.detail = !item.detail;
     };
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-    ], WorkComponent.prototype, "data", void 0);
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Boolean)
-    ], WorkComponent.prototype, "filterEnable", void 0);
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-    ], WorkComponent.prototype, "clear", void 0);
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-    ], WorkComponent.prototype, "filterData", void 0);
     WorkComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-work-experience',
             template: __webpack_require__(/*! ./work.component.html */ "./src/app/pages/workPage/work.component.html"),
             styles: [__webpack_require__(/*! ./work.component.css */ "./src/app/pages/workPage/work.component.css")]
-        })
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_data_data_service__WEBPACK_IMPORTED_MODULE_2__["DataService"]])
     ], WorkComponent);
     return WorkComponent;
 }());
@@ -1265,10 +1104,322 @@ var WorkComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/services/word-export.service.ts":
-/*!*************************************************!*\
-  !*** ./src/app/services/word-export.service.ts ***!
-  \*************************************************/
+/***/ "./src/app/services/api/api.service.ts":
+/*!*********************************************!*\
+  !*** ./src/app/services/api/api.service.ts ***!
+  \*********************************************/
+/*! exports provided: ApiService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ApiService", function() { return ApiService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
+
+
+var ApiService = /** @class */ (function () {
+    function ApiService(http) {
+        this.http = http;
+    }
+    ApiService.prototype.getArrayBuffer = function (fileName) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var _this = this;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                return [2 /*return*/, new Promise(function (resolve) {
+                        _this.http.get("/assets/" + fileName, { responseType: 'arraybuffer' }).subscribe(function (res) { return resolve(res); });
+                    })];
+            });
+        });
+    };
+    ApiService.prototype.getJsonFile = function (fileName) {
+        return this.http.get("/assets/" + fileName);
+    };
+    ApiService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], ApiService);
+    return ApiService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/data/data.service.ts":
+/*!***********************************************!*\
+  !*** ./src/app/services/data/data.service.ts ***!
+  \***********************************************/
+/*! exports provided: DataService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DataService", function() { return DataService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _api_api_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../api/api.service */ "./src/app/services/api/api.service.ts");
+/* harmony import */ var _util_arrayUtil_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util/arrayUtil.service */ "./src/app/services/util/arrayUtil.service.ts");
+/* harmony import */ var _util_dateUtil_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/dateUtil.service */ "./src/app/services/util/dateUtil.service.ts");
+
+
+
+
+
+
+var DataService = /** @class */ (function () {
+    function DataService(api, arrayUtil, dateUtil) {
+        this.api = api;
+        this.arrayUtil = arrayUtil;
+        this.dateUtil = dateUtil;
+        this.currentSkill = '';
+        this.filterEnable = false;
+        this.careerSubject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        this.educationSubject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        this.filterEnableSubject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        this.profileSubject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        this.skillsSubject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        this.statsSubject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        this.workSubject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+    }
+    DataService.prototype.clearFilter = function () {
+        this.currentSkill = '';
+        this.filterEnable = false;
+        this.setEducation(this.originalData.education);
+        this.setCareer(this.originalData.careers);
+        this.filterEnableSubject.next(this.filterEnable);
+    };
+    DataService.prototype.init = function () {
+        return this.api.getJsonFile('resume.json');
+    };
+    DataService.prototype.filterCareer = function (filter) {
+        return filter.category === 'industries'
+            ? this.originalData.careers.filter(function (item) { return item.industry === filter.skill; })
+            : this.originalData.careers.reduce(function (array, career) {
+                var alreadyPushed = false;
+                career.projects.forEach(function (item) {
+                    if (item[filter.category] && item[filter.category].indexOf(filter.skill) > -1 && !alreadyPushed) {
+                        array.push(career);
+                        alreadyPushed = true;
+                    }
+                });
+                return array;
+            }, []);
+    };
+    DataService.prototype.filterData = function (filter) {
+        this.currentSkill = filter.skill;
+        this.filterEnable = true;
+        this.setEducation(this.filterSkills(this.filterValidArray(this.originalData.education, 'skills'), filter.category, filter.skill));
+        this.setCareer(this.filterCareer(filter));
+        this.filterEnableSubject.next(this.filterEnable);
+    };
+    DataService.prototype.filterSkills = function (array, category, skill) {
+        return array.reduce(function (result, entry) {
+            if (entry.skills.some(function (item) { return item.category === category && item.skill === skill; })) {
+                result.push(entry);
+            }
+            return result;
+        }, []);
+    };
+    DataService.prototype.filterValidArray = function (array, element) {
+        return array.filter(function (item) { return item[element]; });
+    };
+    DataService.prototype.getData = function () {
+        return {
+            careers: this.carreerData,
+            education: this.educationData,
+            introduction: this.originalData.introduction,
+            profile: this.profileData,
+            skills: this.skillsData,
+            summary: this.originalData.summary
+        };
+    };
+    DataService.prototype.setCareer = function (input) {
+        this.carreerData = input;
+        this.careerSubject.next(this.carreerData);
+        this.skillsData = this.setSkills();
+        this.skillsSubject.next(this.skillsData);
+        this.statsData = this.setStats();
+        this.statsSubject.next(this.statsData);
+    };
+    DataService.prototype.setEducation = function (input) {
+        this.educationData = input;
+        this.educationSubject.next(this.educationData);
+    };
+    DataService.prototype.setOriginalData = function (input) {
+        var _this = this;
+        this.originalData = input;
+        this.setEducation(input.education);
+        this.setProfile(input.profile);
+        this.setCareer(input.careers.map(function (item) {
+            item.dateEnd = item.dateEnd ? _this.dateUtil.calculateDate(item.dateEnd) : new Date();
+            item.dateStart = item.dateStart ? _this.dateUtil.calculateDate(item.dateStart) : new Date();
+            item.months = _this.dateUtil.calculateMonths(item.dateStart, item.dateEnd);
+            return item;
+        }));
+    };
+    DataService.prototype.setProfile = function (input) {
+        this.profileData = input;
+        this.profileSubject.next(this.profileData);
+    };
+    DataService.prototype.setSkills = function () {
+        var _this = this;
+        return this.carreerData.reduce(function (res, item) {
+            res.industries = _this.arrayUtil.validItem(res.industries, item.industry, item.months);
+            res.project = _this.arrayUtil.populateArray(res.project, _this.arrayUtil.validCategories(item.projects, 'project'), item.months);
+            res.services = _this.arrayUtil.populateArray(res.services, _this.arrayUtil.validCategories(item.projects, 'services'), item.months);
+            res.technologies = _this.arrayUtil.populateArray(res.technologies, _this.arrayUtil.validCategories(item.projects, 'technologies'), item.months);
+            return res;
+        }, { industries: [], project: [], services: [], technologies: [] });
+    };
+    DataService.prototype.setStats = function () {
+        return [
+            this.dateUtil.displayYearString(this.carreerData ? Math.round(this.carreerData.reduce(function (sum, item) {
+                sum += item.months;
+                return sum;
+            }, 0) / 12) : 0, this.filterEnable, this.currentSkill),
+            this.arrayUtil.displayCourseStats(this.educationData),
+            this.displayProjectString(this.carreerData ? this.carreerData.reduce(function (sum, item) {
+                sum += item.projects ? item.projects.length : 0;
+                return sum;
+            }, 0) : 0)
+        ];
+    };
+    DataService.prototype.displayProjectString = function (years) {
+        return {
+            description: years > 0 ? 'Successfully delivered' : 'But hopefully soon',
+            metric: years === 0 ? 'No projects yet' : years > 1 ? 'Projects' : 'Project',
+            type: 'success',
+            value: years > 0 ? years : ''
+        };
+    };
+    ;
+    DataService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_api_api_service__WEBPACK_IMPORTED_MODULE_3__["ApiService"], _util_arrayUtil_service__WEBPACK_IMPORTED_MODULE_4__["ArrayUtilService"], _util_dateUtil_service__WEBPACK_IMPORTED_MODULE_5__["DateUtilService"]])
+    ], DataService);
+    return DataService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/util/arrayUtil.service.ts":
+/*!****************************************************!*\
+  !*** ./src/app/services/util/arrayUtil.service.ts ***!
+  \****************************************************/
+/*! exports provided: ArrayUtilService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ArrayUtilService", function() { return ArrayUtilService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var ArrayUtilService = /** @class */ (function () {
+    function ArrayUtilService() {
+    }
+    ArrayUtilService.prototype.displayCourseStats = function (array) {
+        return {
+            description: array && array.length === 0 ? 'Maybe soon.' : array.length > 1 ? 'Distance learning' : "Through " + array[0].institution,
+            metric: array && array.length === 0 ? 'No formal courses' : array.length > 1 ? 'Courses' : 'Course',
+            type: 'secondary',
+            value: array && array.length > 0 ? array.length : ''
+        };
+    };
+    ;
+    ArrayUtilService.prototype.populateArray = function (array, skills, value) {
+        var _this = this;
+        skills.forEach(function (skill) {
+            array = _this.validItem(array, skill, value);
+        });
+        return array;
+    };
+    ArrayUtilService.prototype.populateItem = function (array, skill, value) {
+        var item = array.find(function (obj) { return obj.name === skill; });
+        item ? item.months += value : array.push({ name: skill, months: value });
+        return array;
+    };
+    ArrayUtilService.prototype.reduceCategories = function (array, key) {
+        return array.filter(function (item) { return item[key]; }).map(function (item) { return item[key]; }).flat().reduce(function (res, item) {
+            if (res.indexOf(item) < 0) {
+                res.push(item);
+            }
+            return res;
+        }, []);
+    };
+    ArrayUtilService.prototype.validArray = function (array, skills, value) {
+        return skills ? this.populateArray(array, skills, value) : array;
+    };
+    ArrayUtilService.prototype.validCategories = function (array, key) {
+        return array ? this.reduceCategories(array, key) : [];
+    };
+    ArrayUtilService.prototype.validItem = function (array, skill, value) {
+        return skill ? this.populateItem(array, skill, value) : array;
+    };
+    ArrayUtilService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])()
+    ], ArrayUtilService);
+    return ArrayUtilService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/util/dateUtil.service.ts":
+/*!***************************************************!*\
+  !*** ./src/app/services/util/dateUtil.service.ts ***!
+  \***************************************************/
+/*! exports provided: DateUtilService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DateUtilService", function() { return DateUtilService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var DateUtilService = /** @class */ (function () {
+    function DateUtilService() {
+    }
+    DateUtilService.prototype.calculateDate = function (dateString) {
+        var dateArray = dateString.split('-');
+        return new Date(dateArray[0], parseInt(dateArray[1]) - 1, dateArray[2]);
+    };
+    DateUtilService.prototype.calculateMonths = function (start, end) {
+        return ((end.getFullYear() - start.getFullYear()) * 12) + (end.getMonth() - start.getMonth()) + 1;
+    };
+    DateUtilService.prototype.displayYearString = function (years, filterEnable, currentSkill) {
+        return {
+            description: filterEnable ? currentSkill + " experience" : 'Total work experience',
+            metric: years === 0 ? '' : years > 1 ? 'Years' : 'Year',
+            type: 'info',
+            value: years > 0 ? years : 'No'
+        };
+    };
+    ;
+    DateUtilService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])()
+    ], DateUtilService);
+    return DateUtilService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/word/word-export.service.ts":
+/*!******************************************************!*\
+  !*** ./src/app/services/word/word-export.service.ts ***!
+  \******************************************************/
 /*! exports provided: WordExportService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1285,6 +1436,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var open_docxtemplater_image_module__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(open_docxtemplater_image_module__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var docxtemplater__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! docxtemplater */ "./node_modules/docxtemplater/js/docxtemplater.js");
 /* harmony import */ var docxtemplater__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(docxtemplater__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _data_data_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../data/data.service */ "./src/app/services/data/data.service.ts");
+/* harmony import */ var _api_api_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../api/api.service */ "./src/app/services/api/api.service.ts");
+
+
 
 
 
@@ -1293,51 +1448,77 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var WordExportService = /** @class */ (function () {
-    function WordExportService(http) {
+    function WordExportService(apiService, dataService, http) {
+        var _this = this;
+        this.apiService = apiService;
+        this.dataService = dataService;
         this.http = http;
         this.download = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
-    }
-    WordExportService.prototype.createDoc = function (data, options) {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var fileName, template, zip, opts, imageModule, document, buffer;
+        this.getImage = function (fileName) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
+            var _this = this;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                return [2 /*return*/, new Promise(function (resolve) {
+                        _this.http.get("/assets/" + fileName, { responseType: 'blob' }).subscribe(function (res) { return resolve(res); });
+                    })];
+            });
+        }); };
+        this.initDocument = function (http, fileName) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
+            var template, zip, opts, imageModule, document;
             var _this = this;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        fileName = "Resume for " + data.profile.fullName + (data.filter.length ? ' - ' + data.filter + ' experience' : '') + ".doc";
-                        return [4 /*yield*/, this.getFile('template.docx')];
+                    case 0: return [4 /*yield*/, this.apiService.getArrayBuffer(fileName)];
                     case 1:
                         template = _a.sent();
                         zip = new jszip__WEBPACK_IMPORTED_MODULE_4__(template);
                         opts = {};
                         opts.centered = false;
-                        opts.getImage = function (imageName) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () { return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, this.getImage(imageName)];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); };
+                        opts.getImage = function (imageName) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
+                            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, this.getImage(imageName)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            });
+                        }); };
                         opts.getSize = function () { return [120, 120]; };
                         imageModule = new open_docxtemplater_image_module__WEBPACK_IMPORTED_MODULE_5__(opts);
                         document = new docxtemplater__WEBPACK_IMPORTED_MODULE_6__();
                         document.attachModule(imageModule);
                         document.loadZip(zip);
+                        return [2 /*return*/, document];
+                }
+            });
+        }); };
+    }
+    WordExportService.prototype.createDoc = function (filter, options) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var _a, careers, education, introduction, profile, skills, summary, fileName, document, buffer;
+            var _this = this;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _a = this.dataService.getData(), careers = _a.careers, education = _a.education, introduction = _a.introduction, profile = _a.profile, skills = _a.skills, summary = _a.summary;
+                        fileName = "Resume for " + profile.fullName + (filter.length ? ' - ' + filter + ' experience' : '') + ".doc";
+                        return [4 /*yield*/, this.initDocument(this.http, 'template.docx')];
+                    case 1:
+                        document = _b.sent();
                         document.setData(Object.assign({
-                            careers: data.careers.map(function (item) {
+                            careers: careers.map(function (item) {
                                 item.dateEnd = _this.formatDate(item.dateEnd);
                                 item.dateStart = _this.formatDate(item.dateStart);
                                 return item;
                             }),
-                            contact: data.profile.contact,
-                            education: data.education,
-                            filter: data.filter.length ? data.filter : '',
-                            full_name: data.profile.fullName,
-                            hasFilter: data.filter.length > 0,
+                            contact: profile.contact,
+                            education: education,
+                            filter: filter.length ? filter : '',
+                            full_name: profile.fullName,
+                            hasFilter: filter.length > 0,
                             image: 'profile.jpg',
-                            introduction: data.introduction,
-                            skills: Object.keys(data.skills).reduce(function (array, key) { return array.concat(data.skills[key]); }, [])
+                            introduction: introduction,
+                            skills: Object.keys(skills).reduce(function (array, key) { return array.concat(skills[key]); }, [])
                                 .sort(function (a, b) { return a.years > b.years ? -1 : a.years < b.years ? 1 : a.name > b.name ? 1 : -1; }),
-                            summary: data.summary
+                            summary: summary
                         }, options));
                         document.render();
                         buffer = document.getZip().generate({
@@ -1357,29 +1538,9 @@ var WordExportService = /** @class */ (function () {
         var dateArray = new Date(date).toDateString().split(' ');
         return dateArray[1] + " " + dateArray[3];
     };
-    WordExportService.prototype.getFile = function (fileName) {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var _this = this;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                return [2 /*return*/, new Promise(function (resolve) {
-                        _this.http.get("/assets/" + fileName, { responseType: 'arraybuffer' }).subscribe(function (res) { return resolve(res); });
-                    })];
-            });
-        });
-    };
-    WordExportService.prototype.getImage = function (fileName) {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var _this = this;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                return [2 /*return*/, new Promise(function (resolve) {
-                        _this.http.get("/assets/" + fileName, { responseType: 'blob' }).subscribe(function (res) { return resolve(res); });
-                    })];
-            });
-        });
-    };
     WordExportService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_api_api_service__WEBPACK_IMPORTED_MODULE_8__["ApiService"], _data_data_service__WEBPACK_IMPORTED_MODULE_7__["DataService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])
     ], WordExportService);
     return WordExportService;
 }());
